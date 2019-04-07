@@ -3,8 +3,14 @@ from frappe import _
 
 def get_data():
 	return [
-		{
-			
+{
+			"label": _("Documents"),
+			"items": [
+				{
+					"type": "doctype",
+					"name": "DocType",
+					"description": _("Models (building blocks) of the Application"),
+				},
 				{
 					"type": "doctype",
 					"name": "Module Def",

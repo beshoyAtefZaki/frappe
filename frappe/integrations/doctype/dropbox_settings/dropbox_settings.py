@@ -22,7 +22,7 @@ class DropboxSettings(Document):
 	def onload(self):
 		if not self.app_access_key and frappe.conf.dropbox_access_key:
 			self.set_onload("dropbox_setup_via_site_config", 1)
-		
+
 
 @frappe.whitelist()
 def take_backup():
@@ -103,7 +103,7 @@ def backup_to_dropbox():
 	upload_file_to_dropbox(filename, "/database", dropbox_client)
 
 	frappe.db.close()
-	
+
 	# upload files to files folder
 	did_not_upload = []
 	error_log = []
@@ -223,8 +223,8 @@ def get_dropbox_settings(redirect_uri=False):
 
 @frappe.whitelist()
 def get_redirect_url():
-	url = "{0}/api/method/dropbox_erpnext_broker.www.setup_dropbox.get_authotize_url".format(frappe.conf.dropbox_broker_site)
-
+	# url = "{0}/api/method/dropbox_erpnext_broker.www.setup_dropbox.get_authotize_url".format(frappe.conf.dropbox_broker_site)
+	url ="https://api.dropbox.com/1/metadata/link"
 	try:
 		response = make_post_request(url, data={"site": get_url()})
 		if response.get("message"):
